@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <svg style="display:none;">
+        <symbol id="logo" viewBox="0 0 140 59">
+        </symbol>
+        <symbol id="down" viewBox="0 0 16 16">
+          <polygon points="3.81 4.38 8 8.57 12.19 4.38 13.71 5.91 8 11.62 2.29 5.91 3.81 4.38" />
+        </symbol>
+        <symbol id="users" viewBox="0 0 16 16">
+          <path d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0ZM8,15a7,7,0,0,1-5.19-2.32,2.71,2.71,0,0,1,1.7-1,13.11,13.11,0,0,0,1.29-.28,2.32,2.32,0,0,0,.94-.34,1.17,1.17,0,0,0-.27-.7h0A3.61,3.61,0,0,1,5.15,7.49,3.18,3.18,0,0,1,8,4.07a3.18,3.18,0,0,1,2.86,3.42,3.6,3.6,0,0,1-1.32,2.88h0a1.13,1.13,0,0,0-.27.69,2.68,2.68,0,0,0,.93.31,10.81,10.81,0,0,0,1.28.23,2.63,2.63,0,0,1,1.78,1A7,7,0,0,1,8,15Z" />
+        </symbol>
+
+       
+        <symbol id="pages" viewBox="0 0 16 16">
+          <rect x="4" width="12" height="12" transform="translate(20 12) rotate(-180)" />
+          <polygon points="2 14 2 2 0 2 0 14 0 16 2 16 14 16 14 14 2 14" />
+        </symbol>
+        
+        <symbol id="collapse" viewBox="0 0 16 16">
+          <polygon points="11.62 3.81 7.43 8 11.62 12.19 10.09 13.71 4.38 8 10.09 2.29 11.62 3.81" />
+        </symbol>
+
+      </svg>
+      <header class="page-header">
+        <nav>
+          <a href="#0" aria-label="forecastr logo" class="logo">
+            <svg width="140" height="49">
+              <use xlink:href="#logo"></use>
+            </svg>
+          </a>
+          <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+            <svg width="20" height="20" aria-hidden="true">
+              <use xlink:href="#down"></use>
+            </svg>
+          </button>
+          <ul class="admin-menu">
+            <li class="menu-heading">
+              <h3>Admin</h3>
+            </li>
+            <li>
+              <a href="#0">
+                <svg>
+                  <use xlink:href="#users"></use>
+                </svg>
+                <span>Customers Requests</span>
+              </a>
+            </li>
+            <li>
+                <a href="index.html">
+                  <svg>
+                    <use xlink:href="#users"></use>
+                  </svg>
+                  <span>Log Out</span>
+                </a>
+              </li>
+            <li>
+              <div class="switch">
+                <input type="checkbox" id="mode" checked>
+                <label for="mode">
+                  <span></span>
+                  <span>Dark</span>
+                </label>
+              </div>
+              <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
+                <svg aria-hidden="true">
+                  <use xlink:href="#collapse"></use>
+                </svg>
+                <span>Collapse</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section class="page-content">
+        <section class="search-and-user">
+          <form>
+            <input placeholder="">
+            </button>
+          </form>
+          <div class="admin-profile">
+            <span class="greeting">Hello admin</span>
+            <div class="notifications">
+              <span class="badge">1</span>
+              <svg>
+                <use xlink:href="#users"></use>
+              </svg>
+            </div>
+          </div>
+        </section>
+        <section class="grid" style="display: grid; grid-template-columns: repeat(2, 100%);">  
+          <article style="max-height: 100%;">
+            <form class="form">
+                <div id="findDetails" class="inputBox" style="width: 50%;">
+                    <h1 class="title">Find by Name</h1>
+
+                    <input  type="text" id="findName" placeholder="Search Name" required="">
+                    <textarea placeholder="Your message"></textarea>
+
+                    <div class="buttons">
+                        <input id="submit" type="submit" value=""  required="" style="border: white;">
+                        <input id="update" type="update" value="Confirm" class="button" required="">
+                        <input id="delete" type="delete" value="Remove" class="button" required="">
+                        <input id="find" value="find" class="button" required="">
+                    </div>
+
+    
+                    
+                </div>
+                <div class="div2">
+                    <h3 id="findname1" type="text">Name: </h3>
+                    <h3 id="findEmail" type="text">Email: </h3> 
+                    <h3 id="findNumber" type="text">Number: </h3>
+                    <h3 id="findDate" type="text">Date: </h3>
+                    <h3 id="findTime" type="text">Time: </h3> 
+                </div>  
+                
+
+            </form>
+            
+    
+            <script type="module">
+                // Import the functions you need from the SDKs you need
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+                // TODO: Add SDKs for Firebase products that you want to use
+                // https://firebase.google.com/docs/web/setup#available-libraries
+              
+                // Your web app's Firebase configuration
+                const firebaseConfig1 = {
+                  apiKey: "AIzaSyC8BKxMZgMsoLm6P52hkJRhIPZOtxlQL5A",
+                  authDomain: "dubaibarbershop-5fe7c.firebaseapp.com",
+                  databaseURL: "https://dubaibarbershop-5fe7c-default-rtdb.firebaseio.com",
+                  projectId: "dubaibarbershop-5fe7c",
+                  storageBucket: "dubaibarbershop-5fe7c.appspot.com",
+                  messagingSenderId: "1029336633560",
+                  appId: "1:1029336633560:web:9e5a9019c52b75015987ad"
+                };
+              
+                // Initialize Firebase
+                const app1 = initializeApp(firebaseConfig1);
+    
+                import {getDatabase, get, ref, child}
+                from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"
+    
+                const db1 = getDatabase();
+    
+                var  name = document.querySelector("#name");
+                var  email = document.querySelector("#email");
+                var  number = document.querySelector("#number");
+                var  date = document.querySelector("#date");
+                var  time = document.querySelector("#time");
+    
+                var  findname = document.querySelector("#findname1");
+                var  findemail = document.querySelector("#findEmail");
+                var  findnumber = document.querySelector("#findNumber");
+                var  finddate = document.querySelector("#findDate");
+                var  findtime = document.querySelector("#findTime");
+    
+                var submitId = document.querySelector("#submit");
+                var updateId = document.querySelector("#update");
+                var deletetId = document.querySelector("#delete");
+                var getId = document.querySelector("#find");
+    
+                function submitData() {
+                    set(ref(db1, "Customers/" + name.value), {
+                        Name: name.value,
+                        Email: email.value,
+                        Number: number.value,
+                        Date: date.value,
+                        Time: time.value,
+                    })
+                    .then(()=>{
+                        alert("Data added successfully!")
+                    } )
+                    .catch(()=>{
+                        alert(error)
+                    });
+                }
+                function updateData() {
+                    
+                }
+                function deleteData() {
+                  remove(ref(db1, "Customers/"+ name.value))
+                  .then(()=>{
+                      alert("Data deleted successfully");
+                  })
+                  .catch((error)=>{
+                      alert(error);
+                  });
+                }
+                function getData() {
+                    const dbref = ref(db1);
+    
+                    get(child(dbref, "Customers/" + findName.value))
+                    .then((snapshot)=>{
+                        if (snapshot.exists()) {
+                            findname1.innerHTML = "Name: " + snapshot.val().Name;
+                            findEmail.innerHTML = "Email: " + snapshot.val().Email;
+                            findNumber.innerHTML = "Number: " + snapshot.val().Number;
+                            findDate.innerHTML = "Date: " + snapshot.val().Date;
+                            findTime.innerHTML = "Time: " + snapshot.val().Time;
+    
+                        } else {
+                            alert("NO Data Found");
+                        }
+                    })
+                    .catch((error)=>{
+                        alert(error)
+                    })
+                    
+                }
+    
+                submitId.addEventListener('click', submitData);
+                updateId.addEventListener('click', updateData);
+                deletetId.addEventListener('click', deleteData);
+                getId.addEventListener('click', getData);
+    
+              </script>
+          </article>
+          <article style="margin-top: 20px;">            
+            <div class="main_content"> 
+              <div class="info">
+                  <div class="">
+    
+    
+                    <div class="table-outer">
+                    <div class="table-wrapper">
+                        <table class="table-border" >
+                          <thead>
+                            <th>Customer No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Date</th>
+                            <th>time</th>
+                          </thead>
+                          <tbody id="tbody1"></tbody>
+                        </table>
+                    </div>
+                    </div>
+                  </div>
+    
+                    <script type="module">
+    // -------------------------------FILLING THE TABLE ------------------------------------------//
+                        var customerno = 0;
+                        var tbody = document.getElementById('tbody1');
+    
+    
+                        function AddItemToTable(name,emails,number,date,time){
+                          let trow = document.createElement("tr");
+                          let td1 = document.createElement('td');
+                          let td2 = document.createElement('td');
+                          let td3 = document.createElement('td');
+                          let td4 = document.createElement('td');
+                          let td5 = document.createElement('td');
+                          let td6 = document.createElement('td');
+    
+                          td1.innerHTML=++customerno;
+                          td2.innerHTML=name;
+                          td3.innerHTML=emails;
+                          td4.innerHTML=number;
+                          td5.innerHTML=date;
+                          td5.innerHTML=time;
+    
+                          trow.appendChild(td1);
+                          trow.appendChild(td2);
+                          trow.appendChild(td3);
+                          trow.appendChild(td4);
+                          trow.appendChild(td5);
+                          trow.appendChild(td6);
+    
+                          tbody.appendChild(trow);
+    
+    
+                        } 
+    
+                        function AddAllItemsToTable(TheCustomer){
+                          customerno=0;
+                          tbody.innerHTML="";
+                          TheCustomer.forEach(element => {
+                            AddItemToTable(element.Name, element.Email, element.Number, element.Date, element.Time);
+                          });
+    
+                        }
+    
+                        // Import the functions you need from the SDKs you need
+                        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+                        // TODO: Add SDKs for Firebase products that you want to use
+                        // https://firebase.google.com/docs/web/setup#available-libraries
+    
+                        // Your web app's Firebase configuration
+                        const firebaseConfig = {
+                          apiKey: "AIzaSyC8BKxMZgMsoLm6P52hkJRhIPZOtxlQL5A",
+                          authDomain: "dubaibarbershop-5fe7c.firebaseapp.com",
+                          databaseURL: "https://dubaibarbershop-5fe7c-default-rtdb.firebaseio.com",
+                          projectId: "dubaibarbershop-5fe7c",
+                          storageBucket: "dubaibarbershop-5fe7c.appspot.com",
+                          messagingSenderId: "1029336633560",
+                          appId: "1:1029336633560:web:9e5a9019c52b75015987ad"
+                        };
+    
+                        // Initialize Firebase
+                        const app = initializeApp(firebaseConfig);
+    
+                        import { getDatabase, ref, child, onValue, get }
+                        from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+    
+                        const db = getDatabase();
+    
+      //-----------------------GETTING ALL DATA ---------------------------------//
+    
+                        function GetAllDataOnce(){
+                          const dbRef = ref(db);
+    
+                          get(child(dbRef, "Customers"))
+                          .then((snapshot)=>{
+    
+                            var customers =[];
+    
+                            snapshot.forEach(childSnapshot => {
+                              customers.push(childSnapshot.val());
+                            });
+    
+                            AddAllItemsToTable(customers);
+                          })
+                        }
+    
+                        function GetAllDataRealTime(){
+    
+                          const dbRef = ref(db, "Customers");
+    
+                          onValue(dbRef,(snapshot)=>{
+                            var customers =[];
+    
+                            snapshot.forEach(childSnapshot => {
+                              customers.push(childSnapshot.val());
+                            });
+    
+                            AddAllItemsToTable(customers);
+                          })
+                        }
+    
+                        window.onload = GetAllDataRealTime;
+                    </script>
+    
+                </div>
+            </div>
+          </div></article>
+          <article></article>
+          <article></article>
+          <article></article>
+          <article></article>
+          <article></article>
+          <article></article>
+        </section>
+        <footer class="page-footer">
+        </footer>
+      </section>
+<script src="js/script1.js"></script>
+</body>
+</html>
